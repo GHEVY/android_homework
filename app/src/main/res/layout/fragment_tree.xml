@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
-    tools:context=".FragmentFirst">
+    tools:context=".FragmentTree">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/firsttext"
+        android:id="@+id/thirdtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/design_default_color_error"
@@ -17,6 +17,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="First fragment"/>
+        android:text="Third fragment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

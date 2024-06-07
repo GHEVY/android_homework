@@ -1,7 +1,6 @@
 package com.example.app;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -9,8 +8,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemClickListener {
 
@@ -18,11 +17,15 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         RecyclerView recyclerView = findViewById(R.id.rec_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-       // Log.d("TAG","mess");
-        List<String> items = Arrays.asList("Item 1", "Item 2", "Item 3", "Item 4", "Favorites", "ADD");
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        ArrayList<String> items = new ArrayList<>();
+        items.add("List1");
+        items.add("List2");
+        items.add("List3");
+        items.add("List4");
+        items.add("Favorites");
+        items.add("ADD");
         MyAdapter adapter = new MyAdapter(items, this);
         recyclerView.setAdapter(adapter);
     }
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
                 break;
             case 1:
                 selectedFragment = new FragmentTwo();
+                break;
+            case 2:
+                selectedFragment = new FragmentTree();
                 break;
         }
         if (selectedFragment != null) {

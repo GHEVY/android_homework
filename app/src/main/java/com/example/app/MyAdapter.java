@@ -1,5 +1,4 @@
 package com.example.app;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public  class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private final List<String> itemList;
     private final OnItemClickListener listener;
 
@@ -29,14 +28,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public ViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
             textView = itemView.findViewById(R.id.firsttext);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onItemClick(position);
-                        }
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(position);
                     }
                 }
             });
@@ -52,11 +48,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder( ViewHolder holder, int position) {
-        holder.textView.setText(itemList.get(position));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
     }
 
-    @Override
     public int getItemCount() {
         return itemList.size();
     }
