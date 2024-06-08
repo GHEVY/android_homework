@@ -1,4 +1,5 @@
 package com.example.app;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,16 @@ import java.util.List;
 public  class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private final List<String> itemList;
     private final OnItemClickListener listener;
+    Context context;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
 
-    public MyAdapter(List<String> itemList, OnItemClickListener listener) {
+    public MyAdapter(List<String> itemList, Context context, OnItemClickListener listener) {
         this.itemList = itemList;
         this.listener = listener;
+        this.context = context;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -27,7 +30,7 @@ public  class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
-            textView = itemView.findViewById(R.id.firsttext);
+            textView = itemView.findViewById(R.id.text);
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
                     int position = getAdapterPosition();
@@ -49,6 +52,8 @@ public  class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        String data = itemList.get(position);
+        holder.textView.setText(data);
 
     }
 

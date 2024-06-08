@@ -1,13 +1,10 @@
 package com.example.app;
-
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 
@@ -26,8 +23,8 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
         items.add("List4");
         items.add("Favorites");
         items.add("ADD");
-        MyAdapter adapter = new MyAdapter(items, this);
-        recyclerView.setAdapter(adapter);
+        MyAdapter adapter = new MyAdapter(items, this,this);
+        recyclerView.setAdapter(new MyAdapter(items,this,this));
     }
 
     @Override
@@ -42,6 +39,15 @@ public class MainActivity extends AppCompatActivity implements MyAdapter.OnItemC
                 break;
             case 2:
                 selectedFragment = new FragmentTree();
+                break;
+            case 3:
+                selectedFragment = new FragmentFour();
+                break;
+            case  4:
+                selectedFragment = new FavFragment();
+                break;
+            case 5:
+                selectedFragment = new AddFragment();
                 break;
         }
         if (selectedFragment != null) {
